@@ -17,7 +17,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata = {
     title: 'Vantage Web Designs – Premium Websites for Local Businesses',
     description:
-        'We build fast, responsive, and highly optimized websites for small businesses. 95-100 Google PageSpeed scores guaranteed.',
+        'We build fast, responsive, and highly optimized websites for small businesses. 98-100 Google PageSpeed scores guaranteed.',
     keywords: [
         'web design',
         'web development',
@@ -34,7 +34,7 @@ export const metadata = {
     openGraph: {
         title: 'Vantage Web Designs – Premium Websites for Local Businesses',
         description:
-            'We build fast, responsive, and highly optimized websites for small businesses. 95-100 Google PageSpeed scores guaranteed.',
+            'We build fast, responsive, and highly optimized websites for small businesses. 98-100 Google PageSpeed scores guaranteed.',
         url: 'https://vantagewebdesigns.com',
         siteName: 'Vantage Web Designs',
         images: [
@@ -51,7 +51,7 @@ export const metadata = {
         card: 'summary_large_image',
         title: 'Vantage Web Designs – Premium Websites for Local Businesses',
         description:
-            'We build fast, responsive, and highly optimized websites for small businesses. 95-100 Google PageSpeed scores guaranteed.',
+            'We build fast, responsive, and highly optimized websites for small businesses. 98-100 Google PageSpeed scores guaranteed.',
         images: ['/preview.png'],
     },
 };

@@ -80,5 +80,5 @@ h6 {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  animation: logo-shine 5s ease-in-out infinite;
+  animation: logo-shine 8s ease-in-out infinite;
 }
