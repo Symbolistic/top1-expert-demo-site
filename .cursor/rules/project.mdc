@@ -1,0 +1,36 @@
+---
+description: Project overview, business model, and architecture for Vantage Web Designs
+alwaysApply: true
+---
+
+# Vantage Web Designs — Project Context
+
+## What This Is
+Agency website and base template for a web design business targeting SMBs.
+This repo is copied and modified to create client site templates.
+
+## Business Model
+- **Subscription**: $150/mo — hosting, unlimited edits, support, analytics, 6-month minimum
+- **Lump sum**: $3k one-time + $25/mo hosting + $50/hr edits
+- **E-commerce**: Lump sum only, partner with Shopify dev
+- Selling a relationship, not just a website
+
+## Template Strategy
+- This repo = base template (agency site + starting point for all client builds)
+- 3 initial templates: casual, professional, luxury
+- Each template = copy of this repo with different CSS variables + section layouts
+- Never reuse the same template in the same market
+- `ui/` primitives are shared identically across all templates — only CSS vars and layouts change
+
+## Stack
+- Next.js 16 (App Router, Turbopack)
+- Tailwind CSS v4 — utility classes only, no DaisyUI
+- React Server Components by default — `'use client'` only when strictly needed
+- `next/image` for all images, `next/font` for all fonts
+- Static site — no auth, no database, no Stripe on agency site
+- Contact via form only; Stripe payment links sent manually via email
+
+## What Was Removed
+- DaisyUI (replaced with custom component system)
+- next-auth, mongodb, mongoose, @auth/mongodb-adapter (not needed for static agency site)
+- Sign-in, Profile, auth API routes

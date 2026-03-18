@@ -1,0 +1,58 @@
+---
+description: Component architecture and design system for Vantage Web Designs
+globs: src/**/*.{jsx,js,tsx,ts}
+alwaysApply: false
+---
+
+# Component Architecture
+
+## Three-Layer System
+
+### Layer 1 — UI Primitives (`src/components/ui/`)
+Small, reusable, content-free building blocks. Never hardcode colors — use CSS variables.
+```
+Button.jsx       — variants: primary | secondary | outline | ghost
+Badge.jsx        — variants: default | accent
+SectionHeader.jsx — title + subtitle used in every section
+Card.jsx         — base card wrapper
+Input.jsx        — styled text/email input
+Textarea.jsx
+Label.jsx
+Accordion.jsx    — for FAQ
+```
+
+### Layer 2 — Sections (`src/components/sections/`)
+Full page sections that compose UI primitives. Never write raw `<button>` — use `<Button>`.
+```
+Hero.jsx / Services.jsx / Process.jsx / Pricing.jsx / FAQ.jsx / CTA.jsx / Footer.jsx
+```
+
+### Layer 3 — Layout (`src/components/layout/`)
+```
+Header.jsx / MobileNav.jsx
+```
+
+## Theming
+All values reference CSS variables from `globals.css`. Never hardcode colors, fonts, or spacing.
+
+**Available tokens:**
+- Colors: `--color-bg`, `--color-surface`, `--color-surface-2`, `--color-border`, `--color-primary`, `--color-primary-dark`, `--color-text`, `--color-muted`
+- Fonts: `--font-sans`, `--font-heading`
+- Spacing: `--spacing-section`
+- Radius: `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-xl`
+- Shadows: `--shadow-card`, `--shadow-glow`
+
+```jsx
+/* ✅ GOOD */
+<section className="bg-bg py-[var(--spacing-section)]">
+<h2 className="font-heading text-primary">
+
+/* ❌ BAD */
+<section className="bg-[#09090f] py-24">
+<h2 className="font-syne text-amber-500">
+```
+
+## Client / Server
+- Default to Server Components
+- Add `'use client'` only when using hooks, event handlers, or browser APIs
+- Never add `'use client'` just because it feels familiar

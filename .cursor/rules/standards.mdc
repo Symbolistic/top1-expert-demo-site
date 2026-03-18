@@ -1,0 +1,49 @@
+---
+description: Coding standards — clean code, SOLID, DRY, no magic values
+alwaysApply: true
+---
+
+# Coding Standards
+
+## General
+- KISS — simplest solution that works
+- DRY — if you write it twice, extract it
+- SOLID — single responsibility, no god components
+- No magic values — all constants in `src/utils/constants.js`
+
+```js
+// ❌ BAD
+<section className="py-24">
+
+// ✅ GOOD — use a consistent spacing token via CSS var or Tailwind config
+<section className="py-section">
+```
+
+## No Magic Strings
+```js
+// ❌ BAD
+if (plan === 'pro')
+
+// ✅ GOOD
+import { PLAN_PRO } from '@/utils/constants'
+if (plan === PLAN_PRO)
+```
+
+## File Naming
+- Components: `PascalCase.jsx`
+- Utilities: `camelCase.js`
+- Constants: `SCREAMING_SNAKE_CASE` inside the file
+
+## PageSpeed — Hard Rule (Target: 95-100 across all Core Vitals)
+- `next/image` always — never `<img>`. Always set `width`, `height`, `alt`
+- Above-fold / hero images MUST have `priority` prop (eliminates LCP penalty)
+- `next/font` always — never `@import` in CSS (eliminates render-blocking font requests)
+- Default to Server Components — `'use client'` only when hooks/events/browser APIs are strictly needed
+- No third-party scripts unless loaded via `next/script` with `strategy="lazyOnload"`
+- No CSS `@import` inside component files — all styles via Tailwind or `globals.css`
+- Avoid layout shift: always provide explicit dimensions for images and media
+- `<details>/<summary>` for accordions — zero JS, accessible, no bundle cost
+
+## Comments
+- No comments that describe what code does
+- Only comment non-obvious intent or constraints
