@@ -1,87 +1,75 @@
-export const metadata = { title: 'Terms of Service' };
+import { SITE_NAME, CONTACT_EMAIL } from '@/utils/constants';
 
-const APP = process.env.NEXT_PUBLIC_SITE_NAME || 'Your App';
-const COMPANY = process.env.NEXT_PUBLIC_COMPANY_NAME || 'Your Company';
-const CONTACT = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@example.com';
+export const metadata = { title: `Terms of Service – ${SITE_NAME}` };
 
 export default function TermsPage() {
     return (
-        <div className="mx-auto max-w-4xl px-4 py-16 prose">
+        <div className="mx-auto max-w-4xl px-4 py-16 text-text/80 leading-relaxed space-y-8 [&_h1]:font-heading [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:text-text [&_h1]:mb-2 [&_h2]:font-heading [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-text [&_h2]:mt-8 [&_a]:text-primary [&_a]:underline [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1">
             <h1>Terms of Service</h1>
+            <p className="text-muted text-sm">Last updated: March 2026</p>
 
             <p>
-                These Terms of Service ("Terms") govern your access to and use of {APP}
-                (the "Service") provided by {COMPANY} ("we", "us"). By using the Service, you
-                agree to these Terms.
+                These Terms of Service govern your engagement with {SITE_NAME} ("we", "us") for web design
+                and development services. By submitting a contact form, signing a contract, or otherwise
+                engaging our services, you agree to these terms.
             </p>
 
-            <h2>1. Eligibility</h2>
-            <p>You must be at least 18 years old to use the Service.</p>
-
-            <h2>2. Accounts</h2>
+            <h2>1. Services</h2>
             <p>
-                You are responsible for maintaining the confidentiality of your account and for all
-                activities under it. Provide accurate information and update it as needed.
+                We provide custom website design, development, hosting, and maintenance services for small
+                businesses. The specific scope of work, timeline, and deliverables for each project are
+                outlined in the individual service agreement or contract provided to you before work begins.
             </p>
 
-            <h2>3. Acceptable Use</h2>
-            <p>Do not violate laws, infringe rights, disrupt the Service, or attempt unauthorized access.</p>
-
-            <h2>4. Subscriptions and Payments</h2>
+            <h2>2. Payments</h2>
             <p>
-                Paid features may be offered on a subscription basis. Prices and features may change
-                with notice. Taxes may apply. You authorize us and our payment processor to charge your
-                payment method. Failed payments may result in suspension.
+                Subscription clients are billed monthly at the agreed rate. A 6-month minimum contract
+                applies, after which the agreement continues month-to-month. Lump sum clients pay the
+                agreed amount upfront before work begins. Hosting fees (where applicable) are billed
+                monthly and must remain current for your site to stay live.
             </p>
 
-            <h2>5. Cancellations and Refunds</h2>
+            <h2>3. Cancellations</h2>
             <p>
-                You can cancel at any time; access continues until the end of the billing period.
-                Refunds are provided where required by law and otherwise at our discretion.
+                Subscription clients may cancel after the 6-month minimum by providing 30 days written
+                notice. Upon cancellation, your site remains live until the end of the final paid period.
+                Lump sum clients own their site outright upon final payment. We do not offer refunds on
+                completed work.
             </p>
 
-            <h2>6. Intellectual Property</h2>
+            <h2>4. Ownership</h2>
             <p>
-                We retain all rights in the Service. You may not copy, modify, or create derivative
-                works except as permitted by these Terms.
+                Lump sum clients receive full ownership of the website code and design upon final payment.
+                Subscription clients license the design for the duration of their active subscription.
+                If a subscription is cancelled, the client retains their domain but not the design or code.
             </p>
 
-            <h2>7. User Content</h2>
+            <h2>5. Client Responsibilities</h2>
+            <p>You are responsible for:</p>
+            <ul>
+                <li>Providing accurate business information, branding assets, and content when requested</li>
+                <li>Reviewing and approving design mockups within a reasonable timeframe</li>
+                <li>Keeping your domain registration and any third-party accounts current</li>
+                <li>Not using your website for unlawful purposes</li>
+            </ul>
+
+            <h2>6. Limitation of Liability</h2>
             <p>
-                You retain ownership of content you submit. You grant us a worldwide, non-exclusive
-                license to host, process, and display it to provide the Service.
+                To the maximum extent permitted by law, {SITE_NAME} is not liable for indirect, incidental,
+                or consequential damages arising from your use of our services or your website. Our total
+                liability is limited to the fees paid by you in the three months preceding the claim.
             </p>
 
-            <h2>8. Privacy</h2>
-            <p>Your use of the Service is subject to our Privacy Policy.</p>
-
-            <h2>9. Disclaimers</h2>
+            <h2>7. Modifications</h2>
             <p>
-                THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. WE DISCLAIM ALL
-                IMPLIED WARRANTIES, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
-                NON-INFRINGEMENT.
+                We may update these Terms from time to time. Continued use of our services after changes
+                are posted constitutes acceptance of the updated Terms.
             </p>
 
-            <h2>10. Limitation of Liability</h2>
+            <h2>8. Contact</h2>
             <p>
-                TO THE MAXIMUM EXTENT PERMITTED BY LAW, {COMPANY} WILL NOT BE LIABLE FOR INDIRECT,
-                INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS,
-                REVENUE, DATA, OR USE.
+                Questions? Reach us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
             </p>
-
-            <h2>11. Indemnification</h2>
-            <p>You agree to indemnify and hold {COMPANY} harmless from claims arising from your use of the Service.</p>
-
-            <h2>12. Modifications</h2>
-            <p>We may modify these Terms by posting an updated version. Continued use constitutes acceptance.</p>
-
-            <h2>13. Governing Law</h2>
-            <p>These Terms are governed by the laws of your primary place of business unless otherwise required.</p>
-
-            <h2>14. Contact</h2>
-            <p>Questions? Contact us at {CONTACT}.</p>
         </div>
     );
 }
-
-

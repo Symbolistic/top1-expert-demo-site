@@ -14,8 +14,9 @@ const Header = () => {
         <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md">
             <div className="mx-auto max-w-6xl px-4 h-16 grid grid-cols-3 items-center">
 
-                <Link href="/" className="font-heading font-bold text-base md:text-xl text-text hover:text-primary transition-colors duration-200 whitespace-nowrap">
-                    {SITE_NAME}
+                <Link href="/" className="font-heading font-bold text-base md:text-lg leading-tight whitespace-nowrap">
+                    <span className="block text-text">Vantage</span>
+                    <span className="logo-shine block">Web Designs</span>
                 </Link>
 
                 {/* Desktop nav */}

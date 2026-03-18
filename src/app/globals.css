@@ -58,3 +58,27 @@ h5,
 h6 {
   font-family: var(--font-heading);
 }
+
+/* Logo shine — sweeps once then pauses before repeating */
+@keyframes logo-shine {
+  0%, 65%  { background-position: -250% center; }
+  100%     { background-position: 250% center; }
+}
+
+.logo-shine {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-primary) 42%,
+    #fffbf0 48%,
+    #ffffff 50%,
+    #fffbf0 52%,
+    var(--color-primary) 58%,
+    var(--color-primary) 100%
+  );
+  background-size: 250% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: logo-shine 5s ease-in-out infinite;
+}

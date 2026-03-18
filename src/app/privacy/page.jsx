@@ -1,68 +1,69 @@
-export const metadata = { title: 'Privacy Policy' };
+import { SITE_NAME, CONTACT_EMAIL } from '@/utils/constants';
 
-const APP = process.env.NEXT_PUBLIC_SITE_NAME || 'Your App';
-const COMPANY = process.env.NEXT_PUBLIC_COMPANY_NAME || 'Your Company';
-const CONTACT = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@example.com';
+export const metadata = { title: `Privacy Policy – ${SITE_NAME}` };
 
 export default function PrivacyPage() {
     return (
-        <div className="mx-auto max-w-4xl px-4 py-16 prose">
+        <div className="mx-auto max-w-4xl px-4 py-16 text-text/80 leading-relaxed space-y-8 [&_h1]:font-heading [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:text-text [&_h1]:mb-2 [&_h2]:font-heading [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-text [&_h2]:mt-8 [&_a]:text-primary [&_a]:underline [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1">
             <h1>Privacy Policy</h1>
+            <p className="text-muted text-sm">Last updated: March 2026</p>
 
             <p>
-                This Privacy Policy explains how {COMPANY} ("we", "us") collects, uses, and shares
-                information when you use {APP} (the "Service").
+                {SITE_NAME} ("we", "us") is committed to protecting your privacy. This policy explains
+                what information we collect when you visit our website or contact us, and how we use it.
             </p>
 
             <h2>1. Information We Collect</h2>
             <ul>
-                <li>Account information (name, email, authentication data)</li>
-                <li>Payment information processed by our payment provider (we don’t store card numbers)</li>
-                <li>Usage data and device information (logs, IP, browser)</li>
-                <li>Cookies and similar technologies for essential functionality and analytics</li>
+                <li>Contact form submissions (name, email, business name, message)</li>
+                <li>Basic analytics data (pages visited, time on site, general location) via Google Analytics</li>
+                <li>Standard server logs (IP address, browser type) collected automatically by our hosting provider</li>
             </ul>
+            <p>We do not collect payment information directly. No accounts or passwords are created on this site.</p>
 
-            <h2>2. How We Use Information</h2>
+            <h2>2. How We Use It</h2>
             <ul>
-                <li>Provide, maintain, and improve the Service</li>
-                <li>Process payments and manage subscriptions</li>
-                <li>Communicate with you about product updates and support</li>
-                <li>Detect, prevent, and address security or abuse issues</li>
-                <li>Comply with legal obligations</li>
+                <li>To respond to your inquiry and communicate about potential projects</li>
+                <li>To understand how visitors use our site and improve it over time</li>
+                <li>To fulfill our contractual obligations to clients</li>
             </ul>
 
             <h2>3. Sharing</h2>
             <p>
-                We share data with service providers who help us run the Service (e.g., hosting, email,
-                analytics, payments). We require them to protect your data and use it only on our behalf.
+                We do not sell your information. We use a small number of trusted third-party services
+                to operate our business, including Google Analytics for site analytics and Resend for
+                email delivery. These providers are bound by their own privacy policies and may only
+                use your data to provide services to us.
             </p>
 
-            <h2>4. Data Retention</h2>
-            <p>We keep data only as long as necessary for the purposes above or as required by law.</p>
+            <h2>4. Cookies</h2>
+            <p>
+                This site uses cookies for analytics purposes only (Google Analytics). You can disable
+                cookies in your browser settings at any time without affecting your ability to use the site.
+            </p>
 
-            <h2>5. Security</h2>
-            <p>We use industry-standard safeguards to protect information. No method is 100% secure.</p>
+            <h2>5. Data Retention</h2>
+            <p>
+                Contact form submissions are retained only as long as necessary to respond and manage
+                the business relationship. Analytics data is retained per Google Analytics default settings.
+            </p>
 
-            <h2>6. Your Choices</h2>
-            <ul>
-                <li>You can access, update, or delete your account data from within the app or by contacting us.</li>
-                <li>You can control cookies via your browser settings.</li>
-                <li>You can opt out of non-essential emails via unsubscribe links.</li>
-            </ul>
+            <h2>6. Your Rights</h2>
+            <p>
+                You may request access to, correction of, or deletion of any personal information we
+                hold about you by contacting us directly. We will respond within 30 days.
+            </p>
 
-            <h2>7. International Transfers</h2>
-            <p>Your data may be processed in countries other than your own, which may have different laws.</p>
+            <h2>7. Changes</h2>
+            <p>
+                We may update this policy periodically. The "Last updated" date at the top reflects
+                the most recent version.
+            </p>
 
-            <h2>8. Children</h2>
-            <p>The Service is not intended for children under 13, and we don’t knowingly collect their data.</p>
-
-            <h2>9. Changes</h2>
-            <p>We may update this Policy. We’ll post the updated version and update the “Last updated” date.</p>
-
-            <h2>10. Contact</h2>
-            <p>Questions or requests? Contact us at {CONTACT}.</p>
+            <h2>8. Contact</h2>
+            <p>
+                Questions? Reach us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+            </p>
         </div>
     );
 }
-
-
