@@ -21,13 +21,20 @@ const CTA = ({
         e.preventDefault();
         setStatus('loading');
         try {
-            const res = await fetch('/api/contact', {
+            const formData = new FormData();
+            formData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY);
+            formData.append('name', form.name);
+            formData.append('email', form.email);
+            formData.append('Business Name', form.business);
+            formData.append('message', form.message);
+
+            const res = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form),
+                body: formData,
             });
-            setStatus(res.ok ? 'success' : 'error');
-            if (res.ok) setForm(INITIAL_STATE);
+            const data = await res.json();
+            setStatus(data.success ? 'success' : 'error');
+            if (data.success) setForm(INITIAL_STATE);
         } catch {
             setStatus('error');
         }
