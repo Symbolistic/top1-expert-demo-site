@@ -25,7 +25,7 @@ const Header = () => {
                         <Link
                             key={label}
                             href={href}
-                            className="text-sm text-muted hover:text-text transition-colors duration-200"
+                            className="text-sm text-text/70 hover:text-text transition-colors duration-200"
                         >
                             {label}
                         </Link>
@@ -39,7 +39,7 @@ const Header = () => {
                 </div>
 
                 {/* Mobile menu toggle */}
-                <label htmlFor="mobile-menu-toggle" className="md:hidden cursor-pointer p-2 text-muted hover:text-text justify-self-end col-start-3">
+                <label htmlFor="mobile-menu-toggle" className="md:hidden cursor-pointer p-2 text-text/70 hover:text-text justify-self-end col-start-3">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                         <line x1="3" y1="6" x2="21" y2="6" />
                         <line x1="3" y1="12" x2="21" y2="12" />
@@ -55,7 +55,7 @@ const Header = () => {
                     <Link
                         key={label}
                         href={href}
-                        className="py-3 text-sm text-muted hover:text-text transition-colors duration-200 border-b border-border last:border-0"
+                        className="py-3 text-sm text-text/70 hover:text-text transition-colors duration-200 border-b border-border last:border-0"
                     >
                         {label}
                     </Link>

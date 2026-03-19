@@ -11,26 +11,40 @@ alwaysApply: false
 ### Layer 1 — UI Primitives (`src/components/ui/`)
 Small, reusable, content-free building blocks. Never hardcode colors — use CSS variables.
 ```
-Button.jsx       — variants: primary | secondary | outline | ghost
-Badge.jsx        — variants: default | accent
-SectionHeader.jsx — title + subtitle used in every section
-Card.jsx         — base card wrapper
-Input.jsx        — styled text/email input
-Textarea.jsx
-Label.jsx
-Accordion.jsx    — for FAQ
+Button.jsx        — variants: primary | secondary | outline | ghost — sizes: sm | md | lg
+Badge.jsx         — variants: default | accent
+SectionHeader.jsx — eyebrow + title + subtitle, align: center | left
+Card.jsx          — base card wrapper
+Input.jsx         — styled text/email input
+Textarea.jsx      — styled textarea
+Label.jsx         — form label
+Accordion.jsx     — native <details>/<summary>, zero JS
+index.js          — barrel export for all primitives
 ```
 
 ### Layer 2 — Sections (`src/components/sections/`)
 Full page sections that compose UI primitives. Never write raw `<button>` — use `<Button>`.
 ```
-Hero.jsx / Services.jsx / Process.jsx / Pricing.jsx / FAQ.jsx / CTA.jsx / Footer.jsx
+Hero.jsx          — full-bleed bg image, priority loaded, stats bar at bottom
+Services.jsx      — service cards grid
+Performance.jsx   — PageSpeed proof section, accepts screenshotSrc prop
+Process.jsx       — numbered steps
+Pricing.jsx       — two-column subscription vs lump sum
+FAQ.jsx           — accordion items
+CTA.jsx           — contact form (Web3Forms, 'use client')
+Footer.jsx        — logo, nav links, legal links
 ```
 
 ### Layer 3 — Layout (`src/components/layout/`)
 ```
-Header.jsx / MobileNav.jsx
+Header.jsx        — fixed nav, 3-col grid, CSS-only mobile menu, logo-shine animation
 ```
+
+## Header Logo
+The logo uses a CSS animation class `logo-shine` defined in `globals.css`.
+- "Vantage" renders as plain `text-text`
+- "Web Designs" gets the `logo-shine` class — gold text with a sweeping white glisten every 8s
+- Do not remove or alter this without updating `globals.css`
 
 ## Theming
 All values reference CSS variables from `globals.css`. Never hardcode colors, fonts, or spacing.
@@ -44,7 +58,7 @@ All values reference CSS variables from `globals.css`. Never hardcode colors, fo
 
 ```jsx
 /* ✅ GOOD */
-<section className="bg-bg py-[var(--spacing-section)]">
+<section className="bg-surface py-[var(--spacing-section)]">
 <h2 className="font-heading text-primary">
 
 /* ❌ BAD */
@@ -52,7 +66,18 @@ All values reference CSS variables from `globals.css`. Never hardcode colors, fo
 <h2 className="font-syne text-amber-500">
 ```
 
+## Rebranding a Template
+When copying this repo for a new client template:
+1. Update `src/utils/constants.js` — `BASE_URL`, `SITE_NAME`, `CONTACT_EMAIL`
+2. Update CSS tokens in `globals.css` — colors, fonts
+3. Replace `src/styles/assets/hero-img.webp` with client's hero image
+4. Add `public/preview.png` (1200x630) and `public/favicon.png`
+5. Update `.env.local` — `NEXT_PUBLIC_WEB3FORMS_KEY`, Notion keys if blog is active
+6. Update `src/app/layout.js` metadata — title, description, OG tags
+7. Update section copy as needed — all hardcoded in each section component
+
 ## Client / Server
 - Default to Server Components
 - Add `'use client'` only when using hooks, event handlers, or browser APIs
+- `CTA.jsx` is intentionally `'use client'` — it manages form state
 - Never add `'use client'` just because it feels familiar

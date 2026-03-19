@@ -79,8 +79,9 @@ const Performance = ({
                   alt={screenshotAlt}
                   width={640}
                   height={400}
+                  quality={75}
                   className="w-full h-auto"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 50vw"
                 />
               </div>
             ) : (

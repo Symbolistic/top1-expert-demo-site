@@ -26,8 +26,9 @@ const Hero = ({
           alt={imageAlt}
           fill
           priority
+          quality={60}
           className="object-cover object-center"
-          sizes="100vw"
+          sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1920px"
         />
         {/* Layered overlays for readability */}
         <div className="absolute inset-0 bg-bg/70" />

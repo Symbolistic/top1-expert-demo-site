@@ -28,9 +28,9 @@ const FeatureItem = ({ label, included }) => (
     {included ? (
       <FiCheck className="shrink-0 text-primary" />
     ) : (
-      <FiX className="shrink-0 text-muted/50" />
+      <FiX className="shrink-0 text-muted" />
     )}
-    <span className={included ? "text-text" : "text-muted/60 line-through"}>
+    <span className={included ? "text-text" : "text-muted line-through"}>
       {label}
     </span>
   </li>

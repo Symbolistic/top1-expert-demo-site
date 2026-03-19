@@ -10,10 +10,11 @@ Agency website and base template for a web design business targeting SMBs.
 This repo is copied and modified to create client site templates.
 
 ## Business Model
-- **Subscription**: $150/mo — hosting, unlimited edits, support, analytics, 6-month minimum
-- **Lump sum**: $3k one-time + $25/mo hosting + $50/hr edits
+- **Subscription**: $150/mo — $0 down, hosting, unlimited edits, 24/7 support, analytics, 6-month minimum contract, site ownership transfers after 12 months
+- **Lump sum**: $1,200 one-time + $25/mo hosting + $50/hr edits — client owns site outright
 - **E-commerce**: Lump sum only, partner with Shopify dev
 - Selling a relationship, not just a website
+- Stripe payment links sent manually via email — no payment processing on site
 
 ## Template Strategy
 - This repo = base template (agency site + starting point for all client builds)
@@ -23,14 +24,49 @@ This repo is copied and modified to create client site templates.
 - `ui/` primitives are shared identically across all templates — only CSS vars and layouts change
 
 ## Stack
-- Next.js 16 (App Router, Turbopack)
+- Next.js 16.1.7 (App Router, Turbopack)
 - Tailwind CSS v4 — utility classes only, no DaisyUI
 - React Server Components by default — `'use client'` only when strictly needed
 - `next/image` for all images, `next/font` for all fonts
-- Static site — no auth, no database, no Stripe on agency site
-- Contact via form only; Stripe payment links sent manually via email
+- Static site — no auth, no database, no Stripe SDK
+- Contact form via Web3Forms — no API route needed, submissions go directly to email inbox
 
-## What Was Removed
+## Contact Form Pattern (Web3Forms)
+- Free at web3forms.com — 250 submissions/mo per account
+- Each client gets their own free Web3Forms account and access key
+- Access key stored in `.env.local` as `NEXT_PUBLIC_WEB3FORMS_KEY`
+- Key is safe to expose client-side — it only controls where emails are delivered
+- Per-client `.env.local` vars:
+  ```
+  NEXT_PUBLIC_WEB3FORMS_KEY=their_access_key
+  NOTION_API_KEY=their_notion_key (if blog is active)
+  NOTION_DATABASE_ID=their_database_id (if blog is active)
+  ```
+
+## Static Assets
+- OG image and favicon MUST be in `public/` folder — not `src/styles/assets/`
+- `public/preview.png` — 1200x630px OpenGraph image
+- `public/favicon.png` — browser tab icon
+- Images used in components (hero, etc.) live in `src/styles/assets/` and are imported via `next/image`
+
+## Constants
+All site-wide values live in `src/utils/constants.js`:
+```js
+export const BASE_URL = 'https://vantagewebdesigns.com';
+export const SITE_NAME = 'Vantage Web Designs';
+export const CONTACT_EMAIL = 'hello@vantagewebdesigns.com';
+```
+When copying for a client template, update all three values first.
+
+## Blog
+- Powered by Notion + `@notionhq/client` v4 + `notion-to-md`
+- Blog is hidden from nav by default — add to `NAV_LINKS` in `Header.jsx` when ready
+- Requires `NOTION_API_KEY` and `NOTION_DATABASE_ID` in `.env.local`
+
+## What Was Removed from Original Boilerplate
 - DaisyUI (replaced with custom component system)
-- next-auth, mongodb, mongoose, @auth/mongodb-adapter (not needed for static agency site)
+- next-auth, mongodb, mongoose, @auth/mongodb-adapter
 - Sign-in, Profile, auth API routes
+- Stripe SDK, Stripe webhook route
+- Tawk.to chat widget
+- Old boilerplate env vars (MongoDB URI, NextAuth secret, Google OAuth, Resend, Stripe keys)
