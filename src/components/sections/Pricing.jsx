@@ -9,7 +9,7 @@ const SUBSCRIPTION_FEATURES = [
   { label: "Monthly updates", included: true },
   { label: "Google Analytics setup", included: true },
   { label: "Google Business Profile help", included: true },
-  { label: "You own the site", included: false },
+  { label: "Site ownership after 12 months", included: true },
 ];
 
 const LUMP_SUM_FEATURES = [
