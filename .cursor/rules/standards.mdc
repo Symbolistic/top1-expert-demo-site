@@ -60,6 +60,70 @@ This codebase has been verified at 100/100/100/100 on PageSpeed Insights (deskto
   Use `text-text/70` instead — it's relative to the text color and always passes on dark backgrounds
 - Never use opacity modifiers on muted text (e.g. `text-muted/60`) — the blended color often fails contrast
   Use full `text-muted` and rely on `line-through` or other visual cues for hierarchy instead
+- Never use low opacity modifiers on white text over dark backgrounds (e.g. `text-white/20`, `text-white/30`)
+  Lighthouse blends the value against the actual background color and checks the result
+  On navy `#1B2434`, `text-white/55` is the minimum passing opacity (5.03:1) — never go below this
+
+## Clickable Cards — SEO Pattern
+- Wrap the entire card in `<Link>` — never put a standalone "Learn More" link inside a card
+  Lighthouse's SEO audit checks visible link text, not `aria-label`
+  When the card is the link, the accessible name comes from the `<h3>` heading — which is descriptive
+- The visual "Learn More" affordance becomes a `<span aria-hidden="true">` inside the card link
+- Hover effects use `group` on the `<Link>` and `group-hover:` on the inner span
+
+```jsx
+// ❌ BAD — Lighthouse flags "Learn More" as non-descriptive link text
+<div>
+  <h3>Roof Replacement</h3>
+  <Link href="/services/roof-replacement">Learn More</Link>
+</div>
+
+// ✅ GOOD — accessible name is "Roof Replacement" from the h3
+<Link href="/services/roof-replacement" className="group">
+  <h3>Roof Replacement</h3>
+  <span aria-hidden="true" className="group-hover:gap-3">Learn More →</span>
+</Link>
+```
+
+## Next.js Dynamic Routes — Async Params
+- In Next.js 15+, `params` is a Promise — always `await` before accessing properties
+- Applies to both the page component AND `generateMetadata`
+
+```js
+// ❌ BAD
+const ServicePage = ({ params }) => {
+  const service = find(params.slug);
+
+// ✅ GOOD
+const ServicePage = async ({ params }) => {
+  const { slug } = await params;
+  const service = find(slug);
+```
+
+## Optional Features — Env Var Guard Pattern
+- Any feature driven by env vars (blog, analytics, CRM) must guard at the data layer
+- Return a safe empty value when the key is absent — never let it crash the build
+
+```js
+// ✅ GOOD — blog is opt-in, build passes without Notion keys
+export async function getPublishedPosts() {
+  if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
+    return [];
+  }
+  // ... fetch from Notion
+}
+```
+
+## Image Quality Config
+- When using non-default quality values (e.g. `quality={60}`), declare them in `next.config.mjs`
+  Otherwise Next.js logs a warning and may fall back to defaults
+
+```js
+// next.config.mjs
+images: {
+  qualities: [60, 75], // list every quality value used across the codebase
+}
+```
 
 ## Animations — GPU Composited Only
 - Never animate `background-position`, `background-size`, `width`, `height`, `top`, `left` — these trigger paint/layout

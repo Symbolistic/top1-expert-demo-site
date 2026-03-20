@@ -7,6 +7,10 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 export async function getPublishedPosts() {
+    if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
+        return [];
+    }
+
     const response = await notion.databases.query({
         database_id: databaseId,
         filter: {
@@ -30,6 +34,10 @@ export async function getPublishedPosts() {
 }
 
 export async function getPostMarkdown(pageId) {
+    if (!process.env.NOTION_API_KEY) {
+        return '';
+    }
+
     const mdBlocks = await n2m.pageToMarkdown(pageId);
     const { parent } = n2m.toMarkdownString(mdBlocks);
     return parent;

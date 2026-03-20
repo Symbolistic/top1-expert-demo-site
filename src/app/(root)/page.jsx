@@ -1,20 +1,27 @@
 import Hero from '@/components/sections/Hero';
+import TrustBar from '@/components/sections/TrustBar';
 import Services from '@/components/sections/Services';
-import Performance from '@/components/sections/Performance';
+import About from '@/components/sections/About';
+import CTABanner from '@/components/sections/CTABanner';
 import Process from '@/components/sections/Process';
-import Pricing from '@/components/sections/Pricing';
+import Gallery from '@/components/sections/Gallery';
+import Reviews from '@/components/sections/Reviews';
+import ServiceAreas from '@/components/sections/ServiceAreas';
 import FAQ from '@/components/sections/FAQ';
 import CTA from '@/components/sections/CTA';
-import PerformanceScreenshot from '@/styles/assets/performance.webp';
 
 const Home = () => {
     return (
         <main>
             <Hero />
+            <TrustBar />
             <Services />
-            <Performance screenshotSrc={PerformanceScreenshot} />
+            <About />
+            <CTABanner />
             <Process />
-            <Pricing />
+            <Gallery />
+            <Reviews />
+            <ServiceAreas />
             <FAQ />
             <CTA />
         </main>

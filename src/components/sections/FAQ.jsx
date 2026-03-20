@@ -2,39 +2,39 @@ import { SectionHeader, Accordion } from '@/components/ui';
 
 const FAQ_ITEMS = [
     {
-        question: 'How long does it take to build my website?',
-        answer: 'Most sites are live within 1 to 2 weeks from when we start. The main thing that affects the timeline is how quickly you can get us your photos and any info about your business. Once we have what we need, we move fast.',
+        question: 'How long does a roof replacement take?',
+        answer: 'Most residential replacements are completed in one to two days, depending on the size and complexity of the roof. We keep you informed every step of the way and will not leave a job unfinished.',
     },
     {
-        question: 'Do I own the website?',
-        answer: 'On the lump sum plan, yes, you own everything outright. On the subscription plan, we host and manage the site on your behalf. If you cancel, you keep your domain. The design and code stay with us, so you would need to start fresh with someone else. That is part of why we encourage the 6-month minimum. It takes 6 to 12 months for Google to properly rank a new site, and we want you around long enough to actually see the results.',
+        question: 'Do you offer free inspections?',
+        answer: 'Yes — always. We will come out, inspect your roof thoroughly, and give you an honest assessment of what it needs. No pressure, no obligation. If it just needs a minor repair, we will tell you that.',
     },
     {
-        question: 'What is included in the $150 a month?',
-        answer: 'Everything. Hosting, unlimited edits, 24/7 support, monthly updates, Google Analytics, and help with your Google Business Profile. You also get our direct number. No phone trees, no support tickets. Just text or call and we handle it.',
+        question: 'Will my homeowner\'s insurance cover the damage?',
+        answer: 'Storm damage from hail, wind, or fallen trees is often covered. We are experienced with the insurance claim process and can help you document the damage and work directly with your adjuster to make it as painless as possible.',
     },
     {
-        question: 'Why should I keep paying $150 a month after the site is built?',
-        answer: 'Think about it this way. If the site brings in one new customer a month, it has already paid for itself. For most trades and service businesses, one customer is worth hundreds to thousands of dollars. The $150 is not just for the site. It is access to us. It is someone managing your web presence so you do not have to. Every hour you spend messing with a website is an hour not spent on your business.',
+        question: 'What roofing materials do you use?',
+        answer: 'We primarily install architectural shingles from top manufacturers like GAF and Owens Corning, which carry 25 to 50 year manufacturer warranties. We can walk you through your options and recommend what makes the most sense for your home and budget.',
     },
     {
-        question: 'Will my site rank on Google?',
-        answer: 'We build every site to score 98-100 on Google PageSpeed, which is a direct ranking factor. We also structure the content properly and help with your Google Business Profile. Ranking takes time and depends on your market, but we give you the best possible foundation from day one.',
+        question: 'Are you licensed and insured?',
+        answer: 'Yes. We are fully licensed, bonded, and insured in New York. We carry both general liability and workers\' compensation insurance, so you are fully protected. We are happy to provide proof of insurance before any work begins.',
     },
     {
-        question: 'What if I need changes after the site is live?',
-        answer: 'Subscription clients get unlimited edits included, just reach out and we take care of it. Lump sum clients are billed at $50 per hour with a one hour minimum. Most simple edits take less than an hour.',
+        question: 'Do you offer a workmanship warranty?',
+        answer: 'Yes. Every job we complete comes with a lifetime workmanship warranty. If something we installed fails due to our work, we come back and fix it — no cost to you. That is our commitment.',
     },
 ];
 
 const FAQ = ({
     eyebrow = 'FAQ',
     title = 'Common Questions',
-    subtitle = "Something on your mind? Here are the ones we hear most. If yours is not here, just reach out.",
+    subtitle = 'Have something else on your mind? Give us a call — we are happy to talk it through.',
     items = FAQ_ITEMS,
 }) => {
     return (
-        <section id="faq" className="py-[var(--spacing-section)]">
+        <section id="faq" className="py-[var(--spacing-section)] bg-bg">
             <div className="mx-auto max-w-3xl px-4">
                 <SectionHeader
                     eyebrow={eyebrow}

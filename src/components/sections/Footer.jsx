@@ -1,43 +1,46 @@
 import Link from 'next/link';
-import { SITE_NAME } from '@/utils/constants';
+import { SITE_NAME, CONTACT_EMAIL, PHONE_NUMBER, PHONE_HREF, LICENSE_NUMBER } from '@/utils/constants';
 
-const NAV_LINKS = [
-    { label: 'Services', href: '#services' },
-    { label: 'Process', href: '#process' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Blog', href: '/blog' },
+const SERVICE_LINKS = [
+    { label: 'All Services', href: '/services' },
+    { label: 'Roofing', href: '/services/roofing' },
+    { label: 'Skylights', href: '/services/skylights' },
+    { label: 'Chimney', href: '/services/chimney' },
+    { label: 'Gutters', href: '/services/gutters' },
 ];
 
-const LEGAL_LINKS = [
+const COMPANY_LINKS = [
+    { label: 'About', href: '/about' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Reviews', href: '/#reviews' },
+    { label: 'Service Areas', href: '/#areas' },
     { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms of Service', href: '/terms' },
 ];
 
 const Footer = () => {
     return (
-        <footer className="border-t border-border bg-surface">
-            <div className="mx-auto max-w-6xl px-4 py-16">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <footer className="bg-navy">
+            <div className="mx-auto max-w-6xl px-6 pt-14 pb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
 
-                    <div className="flex flex-col gap-4">
-                        <Link href="/" className="font-heading font-bold text-xl text-text">
+                    {/* Brand */}
+                    <div className="flex flex-col gap-4 lg:col-span-1">
+                        <Link href="/" className="font-heading font-bold text-xl text-white">
                             {SITE_NAME}
                         </Link>
-                        <p className="text-muted text-sm leading-relaxed max-w-xs">
-                            Premium websites for local businesses. Fast, beautiful, and built to grow with you.
+                        <p className="text-white/55 text-sm leading-relaxed max-w-xs">
+                            Family-owned roofing contractor serving New York and the greater metropolitan area with quality workmanship and honest service.
                         </p>
-                        <p className="text-muted text-xs">
-                            © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
-                        </p>
+                        {LICENSE_NUMBER && <p className="text-white/55 text-xs">{LICENSE_NUMBER}</p>}
                     </div>
 
+                    {/* Services */}
                     <div className="flex flex-col gap-4">
-                        <h3 className="text-sm font-semibold text-text">Navigation</h3>
+                        <h3 className="text-sm font-semibold text-white tracking-wide">Services</h3>
                         <ul className="flex flex-col gap-2">
-                            {NAV_LINKS.map(({ label, href }) => (
+                            {SERVICE_LINKS.map(({ label, href }) => (
                                 <li key={label}>
-                                    <Link href={href} className="text-sm text-muted hover:text-text transition-colors duration-200">
+                                    <Link href={href} className="text-sm text-white/55 hover:text-white transition-colors duration-200">
                                         {label}
                                     </Link>
                                 </li>
@@ -45,12 +48,13 @@ const Footer = () => {
                         </ul>
                     </div>
 
+                    {/* Company */}
                     <div className="flex flex-col gap-4">
-                        <h3 className="text-sm font-semibold text-text">Legal</h3>
+                        <h3 className="text-sm font-semibold text-white tracking-wide">Company</h3>
                         <ul className="flex flex-col gap-2">
-                            {LEGAL_LINKS.map(({ label, href }) => (
+                            {COMPANY_LINKS.map(({ label, href }) => (
                                 <li key={label}>
-                                    <Link href={href} className="text-sm text-muted hover:text-text transition-colors duration-200">
+                                    <Link href={href} className="text-sm text-white/55 hover:text-white transition-colors duration-200">
                                         {label}
                                     </Link>
                                 </li>
@@ -58,6 +62,31 @@ const Footer = () => {
                         </ul>
                     </div>
 
+                    {/* Contact */}
+                    <div className="flex flex-col gap-4">
+                        <h3 className="text-sm font-semibold text-white tracking-wide">Contact</h3>
+                        <ul className="flex flex-col gap-2">
+                            <li>
+                                <a href={PHONE_HREF} className="text-sm text-white/55 hover:text-white transition-colors duration-200">
+                                    {PHONE_NUMBER}
+                                </a>
+                            </li>
+                            <li>
+                                <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-white/55 hover:text-white transition-colors duration-200">
+                                    {CONTACT_EMAIL}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <p className="text-white/55 text-xs">
+                        &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+                    </p>
+                    <p className="text-white/55 text-xs">
+                        Designed &amp; Developed by Vantage Web Designs
+                    </p>
                 </div>
             </div>
         </footer>
