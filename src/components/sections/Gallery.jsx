@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import img1 from '@/styles/assets/roofer-gallary-1.jpg';
-import img2 from '@/styles/assets/roofer-gallary-2.jpg';
-import img3 from '@/styles/assets/roofer-gallary-3.jpg';
-import img4 from '@/styles/assets/roofer-gallary-4.jpg';
-import img5 from '@/styles/assets/roofer-gallary-5.jpg';
+import img1 from '@/styles/assets/roofer-gallary-1.webp';
+import img2 from '@/styles/assets/roofer-gallary-2.webp';
+import img3 from '@/styles/assets/roofer-gallary-3.webp';
+import img4 from '@/styles/assets/roofer-gallary-4.webp';
+import img5 from '@/styles/assets/roofer-gallary-5.webp';
 import { SectionHeader } from '@/components/ui';
 
 const IMAGES = [

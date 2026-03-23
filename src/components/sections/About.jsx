@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import WorkerImage from '@/styles/assets/worker1.jpg';
+import WorkerImage from '@/styles/assets/worker1.webp';
 import { FiCheck } from 'react-icons/fi';
 import { Button } from '@/components/ui';
 
