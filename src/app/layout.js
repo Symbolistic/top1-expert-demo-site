@@ -6,14 +6,14 @@ import { SITE_NAME, BASE_URL } from '@/utils/constants';
 const dmSans = DM_Sans({
     subsets: ['latin'],
     variable: '--font-sans',
-    display: 'swap',
+    display: 'optional',
 });
 
 const playfairDisplay = Playfair_Display({
     subsets: ['latin'],
     variable: '--font-heading',
     weight: ['600', '700'],
-    display: 'swap',
+    display: 'optional',
 });
 
 export const metadata = {

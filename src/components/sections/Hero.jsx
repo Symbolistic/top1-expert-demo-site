@@ -20,7 +20,8 @@ const Hero = ({
                     alt={imageAlt}
                     fill
                     priority
-                    quality={60}
+                    fetchPriority="high"
+                    quality={50}
                     className="object-cover object-center"
                     sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1920px"
                 />
